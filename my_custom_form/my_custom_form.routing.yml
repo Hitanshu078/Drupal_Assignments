@@ -1,0 +1,16 @@
+my_custom_form.form:
+  path: '/custom-node-form'
+  defaults:
+    _form: 'Drupal\my_custom_form\Form\CustomNodeForm'
+    _title: 'Custom Node Form'
+  requirements:
+    _permission: 'access content'
+
+my_custom_form.controller:
+  path: '/custom-node-page'
+  defaults:
+    _controller: 'Drupal\my_custom_form\Controller\CustomFormController::show'
+    _title: 'Custom Node Page'
+  requirements:
+    _permission: 'access content'
+

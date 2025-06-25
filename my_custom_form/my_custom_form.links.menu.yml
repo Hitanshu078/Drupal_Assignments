@@ -1,0 +1,12 @@
+my_custom_form.form_link:
+  title: 'Custom Node Form'
+  route_name: my_custom_form.form
+  menu_name: main
+  description: 'Form to create a custom article node'
+
+my_custom_form.page_link:
+  title: 'Custom Node via Controller'
+  route_name: my_custom_form.controller
+  menu_name: main
+  description: 'Form rendered inside controller'
+
