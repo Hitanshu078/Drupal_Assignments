@@ -38,9 +38,9 @@ class CustomNodeForm extends FormBase {
     $description = $form_state->getValue('description');
 
     $node = Node::create([
-      'type' => 'custom_article', // Make sure this is your content type machine name
+      'type' => 'article',
       'title' => $title,
-      'field_description' => $description,
+      'body' => $description,
     ]);
 
     $node->save();

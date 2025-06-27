@@ -9,8 +9,15 @@ my_custom_form.form:
 my_custom_form.controller:
   path: '/custom-node-page'
   defaults:
-    _controller: 'Drupal\my_custom_form\Controller\CustomFormController::show'
+    _controller: 'Drupal\my_custom_form\Controller\CustomNodeController::show'
     _title: 'Custom Node Page'
   requirements:
     _permission: 'access content'
 
+my_custom_form.api:
+  path: '/custom-nodes-list'
+  defaults:
+    _controller: 'Drupal\my_custom_form\Controller\ApiController::getNodes'
+    _title: 'Submitted Nodes'
+  requirements:
+    _permission: 'access content'
