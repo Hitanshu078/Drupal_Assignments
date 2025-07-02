@@ -13,15 +13,15 @@ class CustomNodeForm extends FormBase {
   }
 
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['title'] = [
+    $form['title'] = [ 
       '#type' => 'textfield',
       '#title' => $this->t('Title'),
       '#required' => TRUE,
     ];
 
-    $form['description'] = [
+    $form['body'] = [
       '#type' => 'textarea',
-      '#title' => $this->t('Description'),
+      '#title' => $this->t('Hello'),
       '#required' => TRUE,
     ];
 
@@ -35,13 +35,17 @@ class CustomNodeForm extends FormBase {
 
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $title = $form_state->getValue('title');
-    $description = $form_state->getValue('description');
+    $body = $form_state->getValue('body');
 
     $node = Node::create([
-      'type' => 'article',
+      'type' => 'custom_article',
       'title' => $title,
-      'body' => $description,
+      'body' => [
+        'value' => $body,
+        'format' => 'plain_text',
+      ],
     ]);
+    
 
     $node->save();
     $this->messenger()->addMessage($this->t('Node created with ID @id', ['@id' => $node->id()]));

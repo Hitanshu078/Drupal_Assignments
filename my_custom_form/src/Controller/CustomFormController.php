@@ -8,8 +8,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Drupal\node\Entity\Node;
 
 
-class ApiController extends ControllerBase {
+class CustomFormController extends ControllerBase {
 
+  public function show() {
+    $form = \Drupal::formBuilder()->getForm('Drupal\my_custom_form\Form\CustomNodeForm');
+    return $form;
+  }
 
   public function getAllNodes(Request $request) {
     \Drupal::logger('my_custom_form')->notice('getAllNodes() called');

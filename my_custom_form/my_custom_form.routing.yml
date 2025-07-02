@@ -9,15 +9,34 @@ my_custom_form.form:
 my_custom_form.controller:
   path: '/custom-node-page'
   defaults:
-    _controller: 'Drupal\my_custom_form\Controller\CustomNodeController::show'
+    _controller: 'Drupal\my_custom_form\Controller\CustomFormController::show'
     _title: 'Custom Node Page'
   requirements:
     _permission: 'access content'
 
-my_custom_form.api:
-  path: '/custom-nodes-list'
+
+# my_custom_form.api:
+#   path: '/custom-nodes-list'
+#   defaults:
+#     _controller: 'Drupal\my_custom_form\Controller\ApiController::getNodes'
+#     _title: 'Submitted Nodes'
+#   requirements:
+#     _permission: 'access content'
+
+my_custom_form.get_all_nodes:
+  path: '/get-all-nodes'
+  methods: [GET]
   defaults:
-    _controller: 'Drupal\my_custom_form\Controller\ApiController::getNodes'
-    _title: 'Submitted Nodes'
+    _controller: 'Drupal\my_custom_form\Controller\ApiController::getAllNodes'
+    _title: 'Get All Nodes'
+  requirements:
+    _permission: 'access content'
+
+my_custom_form.api.post:
+  path: '/create-node'
+  methods: [POST]
+  defaults:
+    _controller: 'Drupal\my_custom_form\Controller\ApiController::createNode'
+    _title: 'Create Node'
   requirements:
     _permission: 'access content'
